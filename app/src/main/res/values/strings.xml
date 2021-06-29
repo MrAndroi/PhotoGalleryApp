@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PhotoGalleryApp</string>
+    <string name="search_here">Search here</string>
+    <string name="welcome_text">Welcome to Photo gallery app where you can search for you favorite photos...</string>
+</resources>
