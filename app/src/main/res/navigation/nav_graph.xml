@@ -9,5 +9,22 @@
         android:id="@+id/fragmentSearchImage"
         tools:layout="@layout/search_image_fragment"
         android:name="com.yarmouk.photogalleryapp.ui.fragments.FragmentSearchImage"
-        android:label="FragmentSearchImage" />
+        android:label="FragmentSearchImage" >
+        <action
+            android:id="@+id/action_fragmentSearchImage_to_fragmentImageDetails"
+            app:destination="@id/fragmentImageDetails"
+            app:enterAnim="@anim/enter_animation"
+            app:exitAnim="@anim/exit_animation"
+            app:popEnterAnim="@anim/pop_enter_animation"
+            app:popExitAnim="@anim/pop_exit_animation" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentImageDetails"
+        tools:layout="@layout/image_details_fragment"
+        android:name="com.yarmouk.photogalleryapp.ui.fragments.FragmentImageDetails"
+        android:label="FragmentImageDetails" >
+        <argument
+            android:name="image"
+            app:argType="com.yarmouk.photogalleryapp.models.UnSplashImage" />
+    </fragment>
 </navigation>

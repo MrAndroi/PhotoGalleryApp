@@ -9,18 +9,28 @@ import coil.load
 import com.yarmouk.photogalleryapp.R
 import com.yarmouk.photogalleryapp.databinding.ImageItemBinding
 import com.yarmouk.photogalleryapp.models.UnSplashImage
+import com.yarmouk.photogalleryapp.others.Constants.FOOTER_VIEW_TYPE
+import com.yarmouk.photogalleryapp.others.Constants.IMAGE_VIEW_TYPE
 
-class ImagesAdapter:PagingDataAdapter<UnSplashImage,ImagesAdapter.ImagesViewHolder>(IMAGE_COMPARATOR){
+//Images RecyclerView adapter
+class ImagesAdapter(val onClick:(image:UnSplashImage) -> Unit):PagingDataAdapter<UnSplashImage,ImagesAdapter.ImagesViewHolder>(IMAGE_COMPARATOR){
 
-    class ImagesViewHolder(private val binding:ImageItemBinding) :RecyclerView.ViewHolder(binding.root){
-        fun bind(photo: UnSplashImage) {
+    inner class ImagesViewHolder(private val binding:ImageItemBinding) :RecyclerView.ViewHolder(binding.root){
+        //Bind the data
+
+        fun bind(image: UnSplashImage) {
             binding.apply {
-                image.load(photo.urls.regular){
+                //pass click function with image object to navigate to the details of the image
+                binding.root.setOnClickListener{onClick(image)}
+
+                //load image url using coil library
+                this.image.load(image.urls.regular){
                     crossfade(true)
                     crossfade(500)
                     error(R.drawable.test)
                 }
-                tvUserName.text = photo.user.name
+                //show the name of user who upload the image
+                tvUserName.text = image.user.name
             }
         }
     }
@@ -40,6 +50,15 @@ class ImagesAdapter:PagingDataAdapter<UnSplashImage,ImagesAdapter.ImagesViewHold
         return ImagesViewHolder(binding)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (position == itemCount){
+            IMAGE_VIEW_TYPE
+        }else {
+            FOOTER_VIEW_TYPE
+        }
+    }
+
+    //Callback for calculating the diff between two non-null items in the list
     companion object {
         private val IMAGE_COMPARATOR = object : DiffUtil.ItemCallback<UnSplashImage>() {
             override fun areItemsTheSame(oldItem: UnSplashImage, newItem: UnSplashImage) =
