@@ -28,11 +28,13 @@ class FragmentSearchImage: Fragment(R.layout.search_image_fragment) {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var imagesAdapter: ImagesAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         gridLayoutManager = GridLayoutManager(requireContext(),2)
+        linearLayoutManager = LinearLayoutManager(requireContext())
 
         imagesAdapter = ImagesAdapter {image ->
             val direction = FragmentSearchImageDirections
@@ -55,6 +57,19 @@ class FragmentSearchImage: Fragment(R.layout.search_image_fragment) {
             }
             btnRetryImages.setOnClickListener {
                 imagesAdapter.retry()
+            }
+            listAndGridSwitcher.setOnCheckedChangeListener { _, isChecked ->
+                //remove old layoutManager
+                rvImages.layoutManager = null
+
+                //check if the switch is checked then make it grid
+                if(isChecked){
+                    rvImages.layoutManager = gridLayoutManager
+                }
+                //otherwise make it list
+                else{
+                    rvImages.layoutManager = linearLayoutManager
+                }
             }
         }
 

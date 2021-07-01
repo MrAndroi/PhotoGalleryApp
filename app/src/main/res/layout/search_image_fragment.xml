@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/welcome_text"
+        android:layout_marginEnd="8dp"
+        android:text="Welcome to Photo gallery app"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/listIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/search_edit_text_background"
         android:drawableStart="@drawable/search_icon"
         android:drawablePadding="12dp"
@@ -36,7 +35,7 @@
         android:padding="10dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#DFDFDF"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeText"
+        app:layout_constraintEnd_toStartOf="@+id/gridIcon"
         app:layout_constraintStart_toStartOf="@+id/welcomeText"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
@@ -88,5 +87,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvImagesError" />
+
+    <ImageView
+        android:id="@+id/gridIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/grid_icon" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/listAndGridSwitcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="@+id/gridIcon"
+        app:layout_constraintEnd_toStartOf="@+id/gridIcon"
+        app:layout_constraintTop_toTopOf="@+id/gridIcon" />
+
+    <ImageView
+        android:id="@+id/listIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/listAndGridSwitcher"
+        app:layout_constraintEnd_toStartOf="@+id/listAndGridSwitcher"
+        app:layout_constraintTop_toTopOf="@+id/listAndGridSwitcher"
+        app:srcCompat="@drawable/list_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
