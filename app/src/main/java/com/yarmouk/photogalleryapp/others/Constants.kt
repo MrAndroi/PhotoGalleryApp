@@ -8,4 +8,7 @@ object Constants {
     //we will use this constants to change span size of our grid
     const val FOOTER_VIEW_TYPE = 2
     const val IMAGE_VIEW_TYPE = 1
+
+    const val IMAGES_TABLE_NAME = "images_table"
+    const val DB_NAME = "photo_gallery_app.db"
 }

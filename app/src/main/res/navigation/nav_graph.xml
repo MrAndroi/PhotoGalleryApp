@@ -15,6 +15,7 @@
             app:destination="@id/fragmentImageDetails"
             app:enterAnim="@anim/enter_animation"
             app:exitAnim="@anim/exit_animation"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/pop_enter_animation"
             app:popExitAnim="@anim/pop_exit_animation" />
     </fragment>
@@ -26,5 +27,15 @@
         <argument
             android:name="image"
             app:argType="com.yarmouk.photogalleryapp.models.UnSplashImage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSavedImages"
+        tools:layout="@layout/saved_images_fragment"
+        android:name="com.yarmouk.photogalleryapp.ui.fragments.FragmentSavedImages"
+        android:label="FragmentSavedImages" >
+        <action
+            android:id="@+id/action_fragmentSavedImages_to_fragmentImageDetails"
+            app:destination="@id/fragmentImageDetails"
+            app:launchSingleTop="true" />
     </fragment>
 </navigation>

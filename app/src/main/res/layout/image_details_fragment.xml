@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:maxHeight="500dp"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/test" />
+        tools:srcCompat="@drawable/test" />
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -34,10 +35,10 @@
         android:id="@+id/uploadIcon"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivDetailsImage"
+        app:layout_constraintTop_toBottomOf="@+id/line"
         app:srcCompat="@drawable/upload" />
 
     <ImageView
@@ -68,51 +69,98 @@
         app:srcCompat="@drawable/height" />
 
     <TextView
-        android:id="@+id/tvUploadedBy"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Image uploaded by: Sami shorman"
+        android:layout_marginTop="8dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetailsImage"
+        tools:text="this is fake desc for the image..." />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <TextView
+        android:id="@+id/tvUploadedBy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/uploadIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/uploadIcon"
-        app:layout_constraintTop_toTopOf="@+id/uploadIcon" />
+        app:layout_constraintTop_toTopOf="@+id/uploadIcon"
+        tools:text="Image uploaded by: Sami shorman" />
 
     <TextView
         android:id="@+id/tvLikedBy"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Liked by 892"
+        android:layout_marginEnd="16dp"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/likeIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/likeIcon"
-        app:layout_constraintTop_toTopOf="@+id/likeIcon" />
+        app:layout_constraintTop_toTopOf="@+id/likeIcon"
+        tools:text="Liked by 892" />
 
     <TextView
         android:id="@+id/tvWidth"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Width 3098 px"
+        android:layout_marginEnd="16dp"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/widthIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/likeIcon"
-        app:layout_constraintTop_toTopOf="@+id/widthIcon" />
+        app:layout_constraintTop_toTopOf="@+id/widthIcon"
+        tools:text="Width 3098 px" />
 
     <TextView
         android:id="@+id/tvHeight"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Height 3098 px"
+        android:layout_marginEnd="16dp"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/heightIcon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/heightIcon"
-        app:layout_constraintTop_toTopOf="@+id/heightIcon" />
+        app:layout_constraintTop_toTopOf="@+id/heightIcon"
+        tools:text="Height 3098 px" />
+
+    <ImageButton
+        android:id="@+id/btnSaveImage"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="2dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDescription"
+        app:srcCompat="@drawable/bookmark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

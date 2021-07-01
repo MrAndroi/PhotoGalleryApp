@@ -2,22 +2,20 @@ package com.yarmouk.photogalleryapp.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.yarmouk.photogalleryapp.R
 import com.yarmouk.photogalleryapp.databinding.ImageItemBinding
 import com.yarmouk.photogalleryapp.models.UnSplashImage
-import com.yarmouk.photogalleryapp.others.Constants.FOOTER_VIEW_TYPE
-import com.yarmouk.photogalleryapp.others.Constants.IMAGE_VIEW_TYPE
 
-//Images RecyclerView adapter for pagination using paging 3 library
-class ImagesAdapter(val onClick:(image:UnSplashImage) -> Unit):PagingDataAdapter<UnSplashImage,ImagesAdapter.ImagesViewHolder>(IMAGE_COMPARATOR){
+//Images RecyclerView adapter without pagination
+class SavedImagesAdapter(val onClick:(image: UnSplashImage) -> Unit):
+    ListAdapter<UnSplashImage, SavedImagesAdapter.ImagesViewHolder>(IMAGE_COMPARATOR){
 
-    inner class ImagesViewHolder(private val binding:ImageItemBinding) :RecyclerView.ViewHolder(binding.root){
+    inner class ImagesViewHolder(private val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root){
         //Bind the data
-
         fun bind(image: UnSplashImage) {
             binding.apply {
                 //pass click function with image object to navigate to the details of the image
@@ -51,14 +49,6 @@ class ImagesAdapter(val onClick:(image:UnSplashImage) -> Unit):PagingDataAdapter
         return ImagesViewHolder(binding)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position == itemCount){
-            IMAGE_VIEW_TYPE
-        }else {
-            FOOTER_VIEW_TYPE
-        }
-    }
-
     //Callback for calculating the diff between two non-null items in the list
     companion object {
         private val IMAGE_COMPARATOR = object : DiffUtil.ItemCallback<UnSplashImage>() {
@@ -69,5 +59,5 @@ class ImagesAdapter(val onClick:(image:UnSplashImage) -> Unit):PagingDataAdapter
                 oldItem == newItem
         }
     }
-}
 
+}

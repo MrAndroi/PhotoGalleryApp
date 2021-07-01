@@ -2,13 +2,13 @@ package com.yarmouk.photogalleryapp.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.yarmouk.photogalleryapp.R
 import com.yarmouk.photogalleryapp.databinding.SearchImageFragmentBinding
 import com.yarmouk.photogalleryapp.others.Constants.FOOTER_VIEW_TYPE
@@ -23,7 +23,7 @@ class FragmentSearchImage: Fragment(R.layout.search_image_fragment) {
 
     //bind search image layout
     private  var _binding:SearchImageFragmentBinding? = null
-    private  val binding:SearchImageFragmentBinding
+    private  val binding: SearchImageFragmentBinding
     get() = _binding!!
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var imagesAdapter: ImagesAdapter
@@ -34,8 +34,10 @@ class FragmentSearchImage: Fragment(R.layout.search_image_fragment) {
 
         gridLayoutManager = GridLayoutManager(requireContext(),2)
 
-        imagesAdapter = ImagesAdapter {
-            Toast.makeText(requireContext(), "Will be implemented", Toast.LENGTH_SHORT).show()
+        imagesAdapter = ImagesAdapter {image ->
+            val direction = FragmentSearchImageDirections
+                .actionFragmentSearchImageToFragmentImageDetails(image)
+            findNavController().navigate(direction)
         }
     }
 
@@ -114,6 +116,7 @@ class FragmentSearchImage: Fragment(R.layout.search_image_fragment) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvImages.layoutManager = null
         _binding = null
     }
 }
